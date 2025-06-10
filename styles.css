@@ -1,0 +1,200 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Orbitron', sans-serif;
+}
+
+:root {
+    --matrix-green: #00ff41;
+    --matrix-dark: #003b00;
+    --matrix-darker: #002200;
+    --matrix-bright: #39ff14;
+    --matrix-glow: #00ff00;
+    --matrix-accent: #00cc00;
+}
+
+body {
+    background-color: #000000;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    color: var(--matrix-green);
+}
+
+.container {
+    background-color: rgba(0, 20, 0, 0.95);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 30px var(--matrix-green),
+                inset 0 0 30px var(--matrix-green);
+    width: 100%;
+    max-width: 500px;
+    border: 2px solid var(--matrix-green);
+    backdrop-filter: blur(5px);
+    position: relative;
+    z-index: 1;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--matrix-green), transparent, var(--matrix-green));
+    z-index: -1;
+    border-radius: 12px;
+    animation: borderGlow 3s linear infinite;
+}
+
+@keyframes borderGlow {
+    0% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
+
+h1 {
+    text-align: center;
+    color: var(--matrix-green);
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    text-shadow: 0 0 10px var(--matrix-green),
+                 0 0 20px var(--matrix-green),
+                 0 0 30px var(--matrix-green);
+    letter-spacing: 2px;
+}
+
+h1 .accent {
+    color: var(--matrix-bright);
+    text-shadow: 0 0 10px var(--matrix-bright),
+                 0 0 20px var(--matrix-bright),
+                 0 0 30px var(--matrix-bright);
+}
+
+.todo-input {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid var(--matrix-green);
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: var(--matrix-darker);
+    color: var(--matrix-green);
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    box-shadow: 0 0 10px var(--matrix-green);
+}
+
+input[type="text"]::placeholder {
+    color: rgba(0, 255, 65, 0.5);
+}
+
+button {
+    padding: 12px 24px;
+    background-color: var(--matrix-green);
+    color: var(--matrix-dark);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button:hover {
+    background-color: var(--matrix-bright);
+    box-shadow: 0 0 15px var(--matrix-bright);
+    transform: translateY(-2px);
+}
+
+#todoList {
+    list-style: none;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: var(--matrix-darker);
+    margin-bottom: 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    cursor: move;
+    user-select: none;
+    position: relative;
+    transform: translateY(0);
+    border: 1px solid var(--matrix-green);
+    box-shadow: 0 0 5px var(--matrix-green);
+}
+
+.todo-item.dragging {
+    opacity: 0.7;
+    background-color: var(--matrix-dark);
+    z-index: 1000;
+    box-shadow: 0 0 15px var(--matrix-bright);
+}
+
+.todo-item.drag-over {
+    transform: translateY(10px);
+    transition: transform 0.2s ease;
+    box-shadow: 0 0 15px var(--matrix-glow);
+}
+
+.todo-item:hover {
+    box-shadow: 0 0 10px var(--matrix-green);
+    transform: translateX(5px);
+}
+
+.todo-item.completed {
+    text-decoration: line-through;
+    opacity: 0.7;
+    border-color: var(--matrix-accent);
+    box-shadow: 0 0 5px var(--matrix-accent);
+}
+
+.todo-item input[type="checkbox"] {
+    margin-right: 15px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--matrix-green);
+}
+
+.todo-item span {
+    flex: 1;
+    color: var(--matrix-green);
+    font-size: 16px;
+}
+
+.delete-btn {
+    background-color: transparent;
+    padding: 5px 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+    color: var(--matrix-bright);
+}
+
+.delete-btn:hover {
+    transform: scale(1.2);
+    text-shadow: 0 0 10px var(--matrix-bright);
+} 
