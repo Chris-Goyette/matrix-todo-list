@@ -19,22 +19,24 @@ body {
     min-height: 100vh;
     display: flex;
     justify-content: center;
+    align-items: center;
     padding: 20px;
     color: var(--matrix-green);
 }
 
 .container {
     background-color: rgba(0, 20, 0, 0.95);
-    padding: 30px;
-    border-radius: 10px;
+    padding: 30px 18px;
+    border-radius: 16px;
     box-shadow: 0 0 30px var(--matrix-green),
                 inset 0 0 30px var(--matrix-green);
     width: 100%;
-    max-width: 500px;
+    max-width: 420px;
     border: 2px solid var(--matrix-green);
     backdrop-filter: blur(5px);
     position: relative;
     z-index: 1;
+    margin: 24px 0;
 }
 
 .container::before {
@@ -197,4 +199,28 @@ button:hover {
 .delete-btn:hover {
     transform: scale(1.2);
     text-shadow: 0 0 10px var(--matrix-bright);
+}
+
+@media (max-width: 500px) {
+    .container {
+        padding: 18px 6px;
+        border-radius: 10px;
+        max-width: 98vw;
+        margin: 10px 0;
+    }
+    h1 {
+        font-size: 1.5em;
+    }
+    .todo-input input[type="text"] {
+        font-size: 15px;
+        padding: 10px;
+    }
+    .todo-item {
+        padding: 10px 6px;
+        font-size: 15px;
+    }
+    button, .delete-btn {
+        font-size: 15px;
+        padding: 10px 14px;
+    }
 } 
